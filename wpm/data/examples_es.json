@@ -1,0 +1,242 @@
+[
+  {
+    "author": "John Lennon",
+    "title": "La vida pasara",
+    "text": "La vida es lo que pasa mientras haces otros planes.",
+    "id": 1000001
+  },
+  {
+    "author": "William Shakespeare",
+    "title": "Hamlet",
+    "text": "Ser o no ser, esa es la pregunta.",
+    "id": 1000002
+  },
+  {
+    "author": "William Shakespeare",
+    "title": "Todo el mundo un escenario",
+    "text": "Todo mundo es un escenario y todos los hombres y mujeres solo actores.",
+    "id": 1000003
+  },
+  {
+    "author": "Francis Bacon",
+    "title": "El conocimiento",
+    "text": "El conocimiento es poder.",
+    "id": 1000004
+  },
+  {
+    "author": "Buddha",
+    "title": "La felicidad",
+    "text": "No hay camino para la felicidad; la felicidad es el camino.",
+    "id": 1000005
+  },
+  {
+    "author": "Steve Jobs",
+    "title": "Buen trabajo",
+    "text": "La única forma de hacer bien trabajo es amar lo que haces.",
+    "id": 1000006
+  },
+  {
+    "author": "Steve Jobs",
+    "title": "Vive cada día",
+    "text": "Vive cada día como si fuera el último.",
+    "id": 1000007
+  },
+  {
+    "author": "Proverbio",
+    "title": "El riesgo",
+    "text": "El que no arriesga, no gana.",
+    "id": 1000008
+  },
+  {
+    "author": "Mother Teresa",
+    "title": "Dónde hay amor",
+    "text": "Dónde hay amor hay vida.",
+    "id": 1000009
+  },
+  {
+    "author": "Federico García Lorca",
+    "title": "El duende",
+    "text": "Pensan mucho los que hablan poco.",
+    "id": 1000010
+  },
+  {
+    "author": "Gabriel García Márquez",
+    "title": "Cien años de soledad",
+    "text": "Muchos años después, frente al paredón, el coronel Álvarez-Márquez recordaría aquel día remoto; su padre lo llevó al registro.",
+    "id": 1000011
+  },
+  {
+    "author": "Miguel de Cervantes",
+    "title": "Don Quijote",
+    "text": "El que no arriesga, no gana y lo escrito está escrito.",
+    "id": 1000012
+  },
+  {
+    "author": "Albert Einstein",
+    "title": "Imaginación",
+    "text": "La imaginación es más importante que el conocimiento.",
+    "id": 1000013
+  },
+  {
+    "author": "Nicolás Maquiavelo",
+    "title": "El objetivo",
+    "text": "La meta está donde la ponemos los que tenemos voluntad.",
+    "id": 1000014
+  },
+  {
+    "author": "Antonio Machado",
+    "title": "Caminante",
+    "text": "Caminante es tu propio camino y se hace camino al andar.",
+    "id": 1000015
+  },
+  {
+    "author": "Paulo Coelho",
+    "title": "El alquimista",
+    "text": "Cuando quieres algo todo el universo conspira para que realices tu sueño.",
+    "id": 1000016
+  },
+  {
+    "author": "Seneca",
+    "title": "El tiempo",
+    "text": "No es que tengamos poco tiempo sino que mucho se desperdicia.",
+    "id": 1000017
+  },
+  {
+    "author": "Rafael",
+    "title": "Emprender",
+    "text": "Emprender es ponerse en camino y aprender de los errores del pasado.",
+    "id": 1000018
+  },
+  {
+    "author": "Lao-Tse",
+    "title": "Mil millas",
+    "text": "El viaje de mil millas comienza con un solo paso.",
+    "id": 1000019
+  },
+  {
+    "author": "Isabel Allende",
+    "title": "La carta de luz",
+    "text": "La esperanza es buena cosa y lo mejor en ninguna cosa muere.",
+    "id": 1000020
+  },
+  {
+    "author": "Ortega y Gasset",
+    "title": "Yo y la razón",
+    "text": "Yo soy yo y mi circunstancia y si no la salvo, salve a mí.",
+    "id": 1000021
+  },
+  {
+    "author": "Gabriel García Márquez",
+    "title": "Veinticuatro cartas",
+    "text": "La vida no es la que uno vivió sino la que uno recuerda.",
+    "id": 1000022
+  },
+  {
+    "author": "Cicerón",
+    "title": "La gratitud",
+    "text": "La gratitud no solo es la mayor de las virtudes sino la madre de todas las demás.",
+    "id": 1000023
+  },
+  {
+    "author": "María Zambrano",
+    "title": "Soñar despiertos",
+    "text": "Necesitamos soñar despiertos para construir el mañana con las manos.",
+    "id": 1000024
+  },
+  {
+    "author": "Federico García Lorca",
+    "title": "La gitica",
+    "text": "Verde que te quiero verde. Verde viento. Verdes ramas.",
+    "id": 1000025
+  },
+  {
+    "author": "Gabriel Márquez",
+    "title": "El amor en el cólera",
+    "text": "El amor no se acaba con la muerte; lo único que se acaba es el cólera.",
+    "id": 1000026
+  },
+  {
+    "author": "Antonio Machad",
+    "title": "A la vez",
+    "text": "Andate tranquilo que te esperamos y la tierra te dará lo que mereces.",
+    "id": 1000027
+  },
+  {
+    "author": "Pablo Neruda",
+    "title": "Amote más bien",
+    "text": "Amote más que las palabras que encontraron el modo de decirte.",
+    "id": 1000028
+  },
+  {
+    "author": "Julio Cortazar",
+    "title": "Allá abajo",
+    "text": "Allá abajo un sol de ploma derretía las piedras del jardín.",
+    "id": 1000029
+  },
+  {
+    "author": "Rubén Darío",
+    "title": "La titica",
+    "text": "Tití pa ti, la titica y el pajarillo del café.",
+    "id": 1000030
+  },
+  {
+    "author": "Cicerón",
+    "title": "Conocerse a sí mismo",
+    "text": "Conóceate a ti mismo y conocerás el universo y a los dioses.",
+    "id": 1000031
+  },
+  {
+    "author": "Baltasar Gracián",
+    "title": "El arte de prar bien",
+    "text": "El arte de practicar bien la vida es el arte de aprovechar cada momento.",
+    "id": 1000032
+  },
+  {
+    "author": "Unamuno",
+    "title": "Del sabor de la vida",
+    "text": "Del sabor de la vida se sabe por la pena que de ella queda.",
+    "id": 1000033
+  },
+  {
+    "author": "Rafael Sánchez Fontos",
+    "title": "El método",
+    "text": "El método para enseñar a escribir es simplemente escribir.",
+    "id": 1000034
+  },
+  {
+    "author": "Jorge Luis Borges",
+    "title": "Las dos ciudades",
+    "text": "Buenos Aires y yo son dos ciudades que se nombran solas.",
+    "id": 1000035
+  },
+  {
+    "author": "Isabel Allende",
+    "title": "La carta de esperanza",
+    "text": "La esperanza es la última que muere y la primera que nos da de comer.",
+    "id": 1000036
+  },
+  {
+    "author": "Simón Bolívar",
+    "title": "Hacer y padecer",
+    "text": "Hacer y padecer es el destino de las gentes que se esfuerzan.",
+    "id": 1000037
+  },
+  {
+    "author": "Miguel Hernández",
+    "title": "Eres y serás",
+    "text": "Eres y serás siempre el pan de mi pan y el agua de mi agua.",
+    "id": 1000038
+  },
+  {
+    "author": "Octavio Paz",
+    "title": "La soledad",
+    "text": "La soledad es la soledad de todos y cada uno de los hombres.",
+    "id": 1000039
+  },
+  {
+    "author": "Luis de Gongora",
+    "title": "Un sueño",
+    "text": "Un sueño de un día solo un sueño y la vida es un soñar también.",
+    "id": 1000040
+  }
+]

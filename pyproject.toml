@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wpm"
+version = "1.51.5"
+description = "Console app for measuring typing speed in words per minute (WPM)"
+license = { file = "LICENSE.txt" }
+requires-python = ">=3.8"
+dependencies = ["setuptools"]
+
+[project.scripts]
+wpm = "wpm.commandline:main"
+
+[tool.setuptools]
+packages = ["wpm"]
+
+[tool.setuptools.package-data]
+wpm = ["data/*"]
