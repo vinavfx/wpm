@@ -15,7 +15,6 @@ import curses
 import curses.ascii
 import locale
 import os
-import sys
 
 from wpm.config import Config
 from wpm.convert import wpm_to_cpm
@@ -23,6 +22,7 @@ from wpm.error import WpmError
 from wpm.gauss import confidence_interval, prediction_interval
 from wpm.histogram import histogram, plot
 import wpm.devfeature as devfeature
+
 
 class Screen(object):
     """Renders the terminal screen."""
@@ -54,14 +54,14 @@ class Screen(object):
         min_lines = 12
         if self.lines < min_lines:
             curses.endwin()
-            raise WpmError(
-                "wpm requires at least %d lines in your display" % min_lines)
+            raise WpmError("wpm requires at least %d lines in your display" % min_lines)
 
         min_cols = 20
         if self.columns < min_cols:
             curses.endwin()
             raise WpmError(
-                "wpm requires at least %d columns in your display" % min_cols)
+                "wpm requires at least %d columns in your display" % min_cols
+            )
 
         try:
             self.screen.keypad(True)
@@ -76,7 +76,6 @@ class Screen(object):
             self.window.timeout(self.config.curses.window_timeout)
             self.window.bkgd(" ", Screen.COLOR_BACKGROUND)
 
-
             # Local variables related to quote. TODO: Move this mess to somewhere
             # else.
             self.cheight = 0
@@ -84,22 +83,22 @@ class Screen(object):
             self.quote = ""
             self.quote_author = ""
             self.quote_columns = 0
-            self.quote_coords = tuple()
+            self.quote_coords = ((0, 0),)
             self.quote_height = 0
             self.quote_id = 0
             self.quote_lengths = tuple()
             self.quote_title = ""
-        except:
+        except BaseException:
             curses.endwin()
             raise
 
     @staticmethod
-    def _word_wrap(text, width):
+    def word_wrap(text, width):
         """Returns lengths of lines that can be printed without wrapping."""
         lengths = []
         while len(text) > width:
             try:
-                end = text[:width + 1].rindex(" ")
+                end = text[: width + 1].rindex(" ")
             except ValueError:
                 break
 
@@ -108,7 +107,8 @@ class Screen(object):
                 return [len(text)]
 
             lengths.append(end)
-            text = text[end + 1:]
+            start = end + 1
+            text = text[start:]
 
         if text:
             lengths.append(len(text))
@@ -116,7 +116,7 @@ class Screen(object):
         return lengths
 
     @staticmethod
-    def _screen_coords(lengths, position):
+    def screen_coords(lengths, position):
         """Translates quote offset into screen coordinates.
 
         Args:
@@ -136,8 +136,6 @@ class Screen(object):
 
         return position, y_position
 
-
-
     @property
     def columns(self):
         """Returns number of terminal columns."""
@@ -152,7 +150,7 @@ class Screen(object):
 
     def set_colors(self):
         """Sets up curses color pairs."""
-        hicolor = os.getenv("TERM").endswith("256color")
+        hicolor = os.getenv("TERM", "").endswith("256color")
 
         if self.monochrome:
             color = self.config.monochromecolors
@@ -206,16 +204,6 @@ class Screen(object):
 
     def get_key(self):
         """Gets a single key stroke."""
-        # pylint: disable=method-hidden
-        # Install a suitable get_key based on Python version
-        if sys.version_info[0:2] >= (3, 3):
-            self.get_key = self._get_key_py33
-        else:
-            self.get_key = self._get_key_py27
-        return self.get_key()
-
-    def _get_key_py33(self):
-        """Python 3.3+ implementation of get_key."""
         # pylint: disable=too-many-return-statements
         try:
             # Curses in Python 3.3 handles unicode via get_wch
@@ -236,48 +224,17 @@ class Screen(object):
         except KeyboardInterrupt:
             raise
 
-    def _get_key_py27(self):
-        """Python 2.7 implementation of get_key."""
-        # pylint: disable=too-many-return-statements
-        try:
-            key = self.window.getkey()
-
-            # Start of UTF-8 multi-byte character?
-            if self.encoding == "utf-8" and ord(key[0]) & 0x80:
-                multibyte = key[0]
-                cont_bytes = ord(key[0]) << 1
-                while cont_bytes & 0x80:
-                    cont_bytes <<= 1
-                    multibyte += self.window.getkey()[0]
-                return multibyte.decode(self.encoding)
-
-            if isinstance(key, int):
-                if key == curses.KEY_BACKSPACE:
-                    return "KEY_BACKSPACE"
-                if key == curses.KEY_LEFT:
-                    return "KEY_LEFT"
-                if key == curses.KEY_RIGHT:
-                    return "KEY_RIGHT"
-                if key == curses.KEY_RESIZE:
-                    return "KEY_RESIZE"
-                return None
-            return key.decode("ascii")
-        except KeyboardInterrupt:
-            raise
-        except curses.error:
-            return None
-
-    def addstr(self, x_pos, y_pos, text, color=None):
+    def addstr(self, x_pos, y_pos, text, color=0):
         """Wraps call around curses.window.addsr."""
+        if isinstance(text, bytes):
+            text = text.decode(self.encoding)
         if self.lines > y_pos >= 0:
             if x_pos >= 0 and (x_pos + len(text)) < self.columns:
                 self.window.addstr(y_pos, x_pos, text, color)
 
-    def addstr_u8(self, x_pos, y_pos, text, color=None):
+    def addstr_u8(self, x_pos, y_pos, text, color=0):
         """Wraps call around curses.window.addsr."""
-        if self.lines > y_pos >= 0:
-            if x_pos >= 0 and (x_pos + len(text)) < self.columns:
-                self.window.addstr(y_pos, x_pos, text.encode(self.encoding), color)
+        self.addstr(x_pos, y_pos, text, color)
 
     def chgat(self, x_pos, y_pos, length, color):
         """Wraps call around curses.window.chgat."""
@@ -292,13 +249,17 @@ class Screen(object):
 
     def right_column(self, y_pos, x_pos, width, text):
         """Writes text to screen in coumns."""
-        lengths = Screen._word_wrap(text, width)
+        lengths = Screen.word_wrap(text, width)
 
         for cur_y, length in enumerate(lengths, y_pos):
-            self.addstr(x_pos - length, cur_y,
-                        text[:length].encode(self.encoding),
-                        Screen.COLOR_AUTHOR)
-            text = text[1+length:]
+            self.addstr(
+                x_pos - length,
+                cur_y,
+                text[:length].encode(self.encoding),
+                Screen.COLOR_AUTHOR,
+            )
+            start = 1 + length
+            text = text[start:]
 
         return len(lengths)
 
@@ -307,22 +268,22 @@ class Screen(object):
         quote = self.quote[:]
         for y_pos, length in enumerate(self.quote_lengths, 2):
             self.addstr(0, y_pos, quote[:length].encode(self.encoding), color)
-            quote = quote[1 + length:]
+            start = 1 + length
+            quote = quote[start:]
 
     def update_author(self):
         """Renders author on screen."""
-        author = u"— %s, %s" % (self.quote_author, self.quote_title)
+        author = "— %s, %s" % (self.quote_author, self.quote_title)
         self.cheight = 4 + self.quote_height
-        self.cheight += self.right_column(self.cheight - 1,
-                                          self.quote_columns - 10,
-                                          self.quote_columns // 2,
-                                          author)
+        self.cheight += self.right_column(
+            self.cheight - 1, self.quote_columns - 10, self.quote_columns // 2, author
+        )
 
     def update_header(self, text):
         """Renders top-bar header."""
         self.addstr(0, 0, text, Screen.COLOR_STATUS)
         self.chgat(0, 0, self.columns, Screen.COLOR_STATUS)
-        #self.window.chgat(0, 0, self.columns, Screen.COLOR_STATUS)
+        # self.window.chgat(0, 0, self.columns, Screen.COLOR_STATUS)
 
     def set_quote(self, quote):
         """Sets up variables used for a new quote."""
@@ -337,14 +298,13 @@ class Screen(object):
         self.quote_author = quote.author
         self.quote_id = quote.text_id
         self.quote_title = quote.title
-        self.quote_lengths = tuple(Screen._word_wrap(self.quote,
-                                                     self.quote_columns - 1))
+        self.quote_lengths = tuple(Screen.word_wrap(self.quote, self.quote_columns - 1))
         self.quote_height = len(self.quote_lengths)
 
         # Remember (x, y) position for each quote offset.
         self.quote_coords = []
-        for offset in range(len(self.quote)+1):
-            x_pos, y_pos = Screen._screen_coords(self.quote_lengths, offset)
+        for offset in range(len(self.quote) + 1):
+            x_pos, y_pos = Screen.screen_coords(self.quote_lengths, offset)
             self.quote_coords.append((x_pos, y_pos))
         self.quote_coords = tuple(self.quote_coords)
 
@@ -354,8 +314,9 @@ class Screen(object):
 
     def update_prompt(self, prompt):
         """Prints prompt on the display."""
-        self.addstr(0, self.cheight, (prompt + " ").encode(self.encoding),
-                    Screen.COLOR_PROMPT)
+        self.addstr(
+            0, self.cheight, (prompt + " ").encode(self.encoding), Screen.COLOR_PROMPT
+        )
 
     def show_browser(self, head, stats, cpm_flag):
         """Show quote browsing screen."""
@@ -386,9 +347,12 @@ class Screen(object):
         """Shows help instructions on screen."""
         self.cheight += 1
         self.set_cursor(0, self.cheight)
-        self.addstr(0, self.cheight,
-                    "Start typing, hit SPACE/ARROWS to browse or ESC to quit.",
-                    Screen.COLOR_PROMPT)
+        self.addstr(
+            0,
+            self.cheight,
+            "Start typing, hit SPACE/ARROWS to browse or ESC to quit.",
+            Screen.COLOR_PROMPT,
+        )
 
     def show_stats(self, stats, cpm_flag):
         """Shows statistics for the current quote."""
@@ -422,19 +386,47 @@ class Screen(object):
             wpm_pi0 = wpm_to_cpm(wpm_pi0)
             wpm_pi1 = wpm_to_cpm(wpm_pi1)
 
-
         if cpm_flag:
-            msg = "cpm %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f-%5.1f] [%5.1f-%5.1f] pi (n=%d)"
+            msg = (
+                "cpm %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f-%5.1f]"
+                " [%5.1f-%5.1f] pi (n=%d)"
+            )
         else:
-            msg = "wpm %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f-%5.1f] [%5.1f-%5.1f] pi (n=%d)"
-        msg %= (wpm_min, wpm_avg, wpm_max, wpm_sd, 100*percent, wpm_ci0, wpm_ci1,
-                wpm_pi0, wpm_pi1, samples)
+            msg = (
+                "wpm %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f-%5.1f]"
+                " [%5.1f-%5.1f] pi (n=%d)"
+            )
+        msg %= (
+            wpm_min,
+            wpm_avg,
+            wpm_max,
+            wpm_sd,
+            100 * percent,
+            wpm_ci0,
+            wpm_ci1,
+            wpm_pi0,
+            wpm_pi1,
+            samples,
+        )
         self.cheight += 2
         self.addstr(0, self.cheight, msg, Screen.COLOR_CORRECT)
 
-        msg = "acc %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f %5.1f] [%5.1f %5.1f] pi (n=%d)" % (
-                100*acc_min, 100*acc_avg, 100*acc_max, 100*acc_sd, 100*percent,
-                100*acc_ci0, 100*acc_ci1, 100*acc_pi0, 100*acc_pi1, samples)
+        msg = (
+            "acc %5.1f min %5.1f avg %5.1f max %5.1f sd %2d%% ci [%5.1f %5.1f] [%5.1f"
+            " %5.1f] pi (n=%d)"
+            % (
+                100 * acc_min,
+                100 * acc_avg,
+                100 * acc_max,
+                100 * acc_sd,
+                100 * percent,
+                100 * acc_ci0,
+                100 * acc_ci1,
+                100 * acc_pi0,
+                100 * acc_pi1,
+                samples,
+            )
+        )
         self.cheight += 1
         self.addstr(0, self.cheight, msg, Screen.COLOR_CORRECT)
         self.cheight += 1
@@ -457,8 +449,9 @@ class Screen(object):
 
         self.update_prompt(score)
         if len(score) < self.columns:
-            self.chgat(11, self.cheight, len(str("%.1f" % wpm_score)),
-                       Screen.COLOR_HISCORE)
+            self.chgat(
+                11, self.cheight, len(str("%.1f" % wpm_score)), Screen.COLOR_HISCORE
+            )
 
         self.show_help()
         self.show_stats(stats, cpm_flag)

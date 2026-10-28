@@ -1,242 +1,242 @@
 [
-  {
-    "author": "John Lennon",
-    "title": "La vida pasara",
-    "text": "La vida es lo que pasa mientras haces otros planes.",
-    "id": 1000001
-  },
-  {
-    "author": "William Shakespeare",
-    "title": "Hamlet",
-    "text": "Ser o no ser, esa es la pregunta.",
-    "id": 1000002
-  },
-  {
-    "author": "William Shakespeare",
-    "title": "Todo el mundo un escenario",
-    "text": "Todo mundo es un escenario y todos los hombres y mujeres solo actores.",
-    "id": 1000003
-  },
-  {
-    "author": "Francis Bacon",
-    "title": "El conocimiento",
-    "text": "El conocimiento es poder.",
-    "id": 1000004
-  },
-  {
-    "author": "Buddha",
-    "title": "La felicidad",
-    "text": "No hay camino para la felicidad; la felicidad es el camino.",
-    "id": 1000005
-  },
-  {
-    "author": "Steve Jobs",
-    "title": "Buen trabajo",
-    "text": "La única forma de hacer bien trabajo es amar lo que haces.",
-    "id": 1000006
-  },
-  {
-    "author": "Steve Jobs",
-    "title": "Vive cada día",
-    "text": "Vive cada día como si fuera el último.",
-    "id": 1000007
-  },
-  {
-    "author": "Proverbio",
-    "title": "El riesgo",
-    "text": "El que no arriesga, no gana.",
-    "id": 1000008
-  },
-  {
-    "author": "Mother Teresa",
-    "title": "Dónde hay amor",
-    "text": "Dónde hay amor hay vida.",
-    "id": 1000009
-  },
-  {
-    "author": "Federico García Lorca",
-    "title": "El duende",
-    "text": "Pensan mucho los que hablan poco.",
-    "id": 1000010
-  },
-  {
-    "author": "Gabriel García Márquez",
-    "title": "Cien años de soledad",
-    "text": "Muchos años después, frente al paredón, el coronel Álvarez-Márquez recordaría aquel día remoto; su padre lo llevó al registro.",
-    "id": 1000011
-  },
-  {
-    "author": "Miguel de Cervantes",
-    "title": "Don Quijote",
-    "text": "El que no arriesga, no gana y lo escrito está escrito.",
-    "id": 1000012
-  },
-  {
-    "author": "Albert Einstein",
-    "title": "Imaginación",
-    "text": "La imaginación es más importante que el conocimiento.",
-    "id": 1000013
-  },
-  {
-    "author": "Nicolás Maquiavelo",
-    "title": "El objetivo",
-    "text": "La meta está donde la ponemos los que tenemos voluntad.",
-    "id": 1000014
-  },
-  {
-    "author": "Antonio Machado",
-    "title": "Caminante",
-    "text": "Caminante es tu propio camino y se hace camino al andar.",
-    "id": 1000015
-  },
-  {
-    "author": "Paulo Coelho",
-    "title": "El alquimista",
-    "text": "Cuando quieres algo todo el universo conspira para que realices tu sueño.",
-    "id": 1000016
-  },
-  {
-    "author": "Seneca",
-    "title": "El tiempo",
-    "text": "No es que tengamos poco tiempo sino que mucho se desperdicia.",
-    "id": 1000017
-  },
-  {
-    "author": "Rafael",
-    "title": "Emprender",
-    "text": "Emprender es ponerse en camino y aprender de los errores del pasado.",
-    "id": 1000018
-  },
-  {
-    "author": "Lao-Tse",
-    "title": "Mil millas",
-    "text": "El viaje de mil millas comienza con un solo paso.",
-    "id": 1000019
-  },
-  {
-    "author": "Isabel Allende",
-    "title": "La carta de luz",
-    "text": "La esperanza es buena cosa y lo mejor en ninguna cosa muere.",
-    "id": 1000020
-  },
-  {
-    "author": "Ortega y Gasset",
-    "title": "Yo y la razón",
-    "text": "Yo soy yo y mi circunstancia y si no la salvo, salve a mí.",
-    "id": 1000021
-  },
-  {
-    "author": "Gabriel García Márquez",
-    "title": "Veinticuatro cartas",
-    "text": "La vida no es la que uno vivió sino la que uno recuerda.",
-    "id": 1000022
-  },
-  {
-    "author": "Cicerón",
-    "title": "La gratitud",
-    "text": "La gratitud no solo es la mayor de las virtudes sino la madre de todas las demás.",
-    "id": 1000023
-  },
-  {
-    "author": "María Zambrano",
-    "title": "Soñar despiertos",
-    "text": "Necesitamos soñar despiertos para construir el mañana con las manos.",
-    "id": 1000024
-  },
-  {
-    "author": "Federico García Lorca",
-    "title": "La gitica",
-    "text": "Verde que te quiero verde. Verde viento. Verdes ramas.",
-    "id": 1000025
-  },
-  {
-    "author": "Gabriel Márquez",
-    "title": "El amor en el cólera",
-    "text": "El amor no se acaba con la muerte; lo único que se acaba es el cólera.",
-    "id": 1000026
-  },
-  {
-    "author": "Antonio Machad",
-    "title": "A la vez",
-    "text": "Andate tranquilo que te esperamos y la tierra te dará lo que mereces.",
-    "id": 1000027
-  },
-  {
-    "author": "Pablo Neruda",
-    "title": "Amote más bien",
-    "text": "Amote más que las palabras que encontraron el modo de decirte.",
-    "id": 1000028
-  },
-  {
-    "author": "Julio Cortazar",
-    "title": "Allá abajo",
-    "text": "Allá abajo un sol de ploma derretía las piedras del jardín.",
-    "id": 1000029
-  },
-  {
-    "author": "Rubén Darío",
-    "title": "La titica",
-    "text": "Tití pa ti, la titica y el pajarillo del café.",
-    "id": 1000030
-  },
-  {
-    "author": "Cicerón",
-    "title": "Conocerse a sí mismo",
-    "text": "Conóceate a ti mismo y conocerás el universo y a los dioses.",
-    "id": 1000031
-  },
-  {
-    "author": "Baltasar Gracián",
-    "title": "El arte de prar bien",
-    "text": "El arte de practicar bien la vida es el arte de aprovechar cada momento.",
-    "id": 1000032
-  },
-  {
-    "author": "Unamuno",
-    "title": "Del sabor de la vida",
-    "text": "Del sabor de la vida se sabe por la pena que de ella queda.",
-    "id": 1000033
-  },
-  {
-    "author": "Rafael Sánchez Fontos",
-    "title": "El método",
-    "text": "El método para enseñar a escribir es simplemente escribir.",
-    "id": 1000034
-  },
-  {
-    "author": "Jorge Luis Borges",
-    "title": "Las dos ciudades",
-    "text": "Buenos Aires y yo son dos ciudades que se nombran solas.",
-    "id": 1000035
-  },
-  {
-    "author": "Isabel Allende",
-    "title": "La carta de esperanza",
-    "text": "La esperanza es la última que muere y la primera que nos da de comer.",
-    "id": 1000036
-  },
-  {
-    "author": "Simón Bolívar",
-    "title": "Hacer y padecer",
-    "text": "Hacer y padecer es el destino de las gentes que se esfuerzan.",
-    "id": 1000037
-  },
-  {
-    "author": "Miguel Hernández",
-    "title": "Eres y serás",
-    "text": "Eres y serás siempre el pan de mi pan y el agua de mi agua.",
-    "id": 1000038
-  },
-  {
-    "author": "Octavio Paz",
-    "title": "La soledad",
-    "text": "La soledad es la soledad de todos y cada uno de los hombres.",
-    "id": 1000039
-  },
-  {
-    "author": "Luis de Gongora",
-    "title": "Un sueño",
-    "text": "Un sueño de un día solo un sueño y la vida es un soñar también.",
-    "id": 1000040
-  }
+    {
+        "author": "Texto original de práctica",
+        "title": "Los planes",
+        "text": "Habíamos planeado salir temprano, pero la lluvia cambió nuestros planes. Mientras esperábamos junto a la ventana, preparamos café y conversamos sin mirar el reloj. Al final, aquella mañana tranquila nos dejó un recuerdo más agradable que la excursión que tanto habíamos organizado durante la semana.",
+        "id": 1000001
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La decisión",
+        "text": "Antes de tomar una decisión importante, Clara escribió sus dudas en una hoja. Después separó los hechos de los temores y pidió consejo a una amiga. Ninguna respuesta era perfecta, pero comprender lo que realmente necesitaba le permitió dar el siguiente paso con más tranquilidad.",
+        "id": 1000002
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El teatro del barrio",
+        "text": "El pequeño teatro del barrio abrió sus puertas después de muchos meses. Los vecinos pintaron las paredes, repararon las sillas y prepararon un escenario sencillo. Cuando se apagaron las luces, todos guardaron silencio. Detrás del telón, una actriz respiró profundamente antes de pronunciar su primera frase.",
+        "id": 1000003
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Aprender cada día",
+        "text": "Aprender algo nuevo no siempre requiere grandes recursos. A veces basta con formular una buena pregunta, escuchar con atención y comprobar lo que creemos saber. Un cuaderno lleno de dudas puede resultar más útil que una estantería de libros que nadie se detiene a leer.",
+        "id": 1000004
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Una tarde tranquila",
+        "text": "La felicidad de aquella tarde no tuvo nada de extraordinario. Había pan recién hecho, una mesa junto al patio y tiempo para escuchar a los demás. Cuando comenzó a oscurecer, encendimos una lámpara pequeña y seguimos hablando, agradecidos por no tener que ir a ninguna parte.",
+        "id": 1000005
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El trabajo bien hecho",
+        "text": "El carpintero revisó la mesa por última vez antes de entregarla. Pasó la mano por los bordes, comprobó las patas y limpió el polvo de la madera. Nadie vería muchas de aquellas pequeñas correcciones, pero él sabía que hacer bien su trabajo también significaba cuidar los detalles.",
+        "id": 1000006
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Un día diferente",
+        "text": "Esa mañana decidió cambiar una costumbre pequeña: dejó el teléfono en casa y salió a caminar. Descubrió una panadería, un jardín escondido y una calle que nunca había recorrido. Al regresar, comprendió que no necesitaba viajar muy lejos para mirar su entorno con una curiosidad renovada.",
+        "id": 1000007
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El primer intento",
+        "text": "La primera vez que intentamos montar la tienda de campaña, dejamos las varillas al revés. Nos reímos, revisamos las instrucciones y empezamos de nuevo. Antes de que anocheciera, todo estaba listo. Aquel pequeño fracaso terminó siendo la parte más divertida de nuestra primera noche en el bosque.",
+        "id": 1000008
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Los cuidados",
+        "text": "Cuando su vecina enfermó, los habitantes del edificio organizaron una lista de tareas. Unos hacían las compras y otros preparaban la comida. Nadie podía resolverlo todo, pero cada ayuda contaba. Durante aquellas semanas, el pasillo dejó de ser un lugar de paso y se convirtió en un punto de encuentro.",
+        "id": 1000009
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Escuchar con atención",
+        "text": "En las reuniones, Mateo solía hablar antes de que los demás terminaran. Un día decidió escuchar y anotar sus preguntas. Descubrió que muchas dudas se resolvían solas y que sus compañeros tenían ideas valiosas. Desde entonces, participa menos veces, pero sus intervenciones ayudan mucho más al grupo.",
+        "id": 1000010
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El recuerdo del pueblo",
+        "text": "Muchos años después, Elena volvió al pueblo donde había pasado los veranos de su infancia. La plaza parecía más pequeña y la vieja fuente estaba seca. Sin embargo, al oír las campanas de la iglesia, recordó con claridad el camino que llevaba hasta la casa de sus abuelos.",
+        "id": 1000011
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Los libros del viaje",
+        "text": "En la estación compró un libro usado para acompañar las horas de viaje. Entre sus páginas encontró un billete antiguo y una nota sin firma. Durante un rato imaginó la historia de su anterior dueño, hasta que el paisaje de la ventana volvió a reclamar toda su atención.",
+        "id": 1000012
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La imaginación",
+        "text": "Con una caja vacía, los niños construyeron un barco capaz de atravesar cualquier océano. La alfombra se convirtió en agua y las sillas fueron islas lejanas. Cuando llegó la hora de cenar, dejaron el barco junto a la pared, preparado para continuar la aventura al día siguiente.",
+        "id": 1000013
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Una meta posible",
+        "text": "Quería correr cinco kilómetros, aunque al principio apenas llegaba hasta la esquina. En lugar de exigirse resultados inmediatos, empezó con paseos cortos y descansos frecuentes. Cada semana avanzó un poco más. Meses después, cruzó la meta sin prisa y celebró la constancia que lo había llevado hasta allí.",
+        "id": 1000014
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El sendero",
+        "text": "El sendero subía entre árboles y desaparecía detrás de una curva. Caminamos despacio, atentos a las piedras húmedas y al sonido del arroyo. Al llegar a la cima, el valle apareció cubierto de nubes. No pudimos ver el horizonte, pero el recorrido había merecido la pena.",
+        "id": 1000015
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El pequeño taller",
+        "text": "Abrir el taller llevó más tiempo del previsto. Hubo que reparar la puerta, conseguir herramientas y aprender a llevar las cuentas. La primera clienta llegó una tarde de viento con una bicicleta averiada. Al terminar la reparación, los dos socios sintieron que su proyecto por fin empezaba a funcionar.",
+        "id": 1000016
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El tiempo disponible",
+        "text": "Durante una semana anotó cuánto tiempo dedicaba a cada actividad. Le sorprendió descubrir las horas que perdía cambiando de una tarea a otra. No necesitaba levantarse antes, sino organizar mejor sus pausas. Con algunos ajustes sencillos, recuperó un rato diario para leer y descansar sin prisas.",
+        "id": 1000017
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Aprender del error",
+        "text": "La receta parecía sencilla, pero olvidamos añadir la levadura. El bizcocho salió bajo y demasiado compacto. En vez de tirarlo, lo cortamos en trozos pequeños y lo servimos con fruta. La siguiente vez revisamos todos los ingredientes antes de empezar y conseguimos el resultado que esperábamos.",
+        "id": 1000018
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La primera etapa",
+        "text": "El viaje comenzó con una mochila ligera y un mapa doblado. No conocíamos todas las paradas, pero habíamos reservado un lugar donde pasar la primera noche. Al salir de la ciudad, dejamos de pensar en la distancia total y nos concentramos en disfrutar de aquella primera etapa.",
+        "id": 1000019
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Después del invierno",
+        "text": "Durante el invierno, el jardín parecía vacío. Las ramas desnudas apenas se movían y la tierra conservaba la humedad de las últimas lluvias. Una mañana aparecieron pequeños brotes junto al muro. La abuela sonrió al verlos y buscó sus guantes, dispuesta a preparar otra temporada de siembra.",
+        "id": 1000020
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Un barrio para todos",
+        "text": "La plaza necesitaba sombra, bancos y un acceso más cómodo para los vecinos mayores. Durante la reunión, cada persona explicó cómo utilizaba aquel espacio. El proyecto cambió al escuchar sus experiencias. Lo que empezó como una reparación terminó convirtiéndose en una oportunidad para mejorar la vida del barrio.",
+        "id": 1000021
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La caja de fotografías",
+        "text": "Al ordenar el armario encontramos una caja de fotografías sin fecha. Algunas mostraban personas que apenas reconocíamos; otras nos devolvieron recuerdos muy precisos. Llamamos a nuestra tía para preguntarle por ellas. Su relato llenó de nombres y anécdotas una tarde que habíamos reservado para limpiar la casa.",
+        "id": 1000022
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Dar las gracias",
+        "text": "El conductor esperó unos segundos para que pudiera subir al autobús. Ella le dio las gracias y buscó un asiento junto a la ventana. Era un gesto pequeño, pero llegó justo en una mañana difícil. Al bajar, sostuvo la puerta para otra persona que venía cargada de bolsas.",
+        "id": 1000023
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La biblioteca futura",
+        "text": "Los alumnos dibujaron la biblioteca que les gustaría tener. Propusieron mesas amplias, rincones silenciosos y estantes a una altura accesible. Después compararon sus ideas con el espacio disponible. Aunque no pudieron realizar todos los cambios, encontraron soluciones sencillas que hicieron la sala más cómoda para todos.",
+        "id": 1000024
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El jardín al amanecer",
+        "text": "Al amanecer, las hojas del limonero brillaban con las gotas de la noche. Un pájaro saltaba entre las ramas mientras el viento movía suavemente la cortina. Abrí la ventana para dejar entrar el aire fresco y permanecí unos minutos allí, antes de que comenzara el ruido de la calle.",
+        "id": 1000025
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La carta pendiente",
+        "text": "Escribió la carta varias veces antes de encontrar las palabras adecuadas. No quería ofrecer excusas, sino reconocer su error y explicar lo que había aprendido. Al terminar, la leyó en voz alta. Después dobló el papel con cuidado y salió a buscar un buzón antes de cambiar de opinión.",
+        "id": 1000026
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La espera",
+        "text": "El tren llevaba veinte minutos de retraso. Algunas personas miraban el reloj y otras buscaban información en las pantallas. Una niña empezó a contar los vagones de un tren detenido en la vía contraria. Su hermano se unió al juego y, por un momento, la espera pareció menos larga.",
+        "id": 1000027
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Las palabras cercanas",
+        "text": "A veces cuesta decir lo que sentimos sin recurrir a frases demasiado solemnes. Por eso dejó una nota breve junto al desayuno: agradecía la compañía y deseaba un buen día. No era una declaración extraordinaria, pero expresaba con sencillez el cariño que las prisas suelen dejar sin palabras.",
+        "id": 1000028
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El calor de la tarde",
+        "text": "El sol caía sobre las piedras del patio y nadie quería abandonar la sombra. Cerramos las persianas a medias y llenamos una jarra de agua fresca. Desde la cocina llegaba el ruido de los platos. Esperamos a que bajara el calor para salir a pasear junto al río.",
+        "id": 1000029
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El canto del mirlo",
+        "text": "Cada mañana, un mirlo se posaba en la verja del jardín. Cantaba unos minutos y luego desaparecía entre los tejados. Con el tiempo aprendimos a reconocer su llamada. Cuando dejó de venir durante varios días, su ausencia nos hizo notar cuánto nos habíamos acostumbrado a aquella pequeña visita.",
+        "id": 1000030
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Conocer los propios límites",
+        "text": "Aceptar que necesitaba ayuda no fue fácil. Había prometido terminar el trabajo sin compañía, pero el plazo se acercaba y aún quedaban muchas tareas. Al compartir sus dificultades, encontró una solución mejor. Aprendió que conocer sus límites no significaba rendirse, sino elegir con más cuidado cómo seguir adelante.",
+        "id": 1000031
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La práctica diaria",
+        "text": "Reservó quince minutos al día para practicar con el teclado. Al principio miraba las teclas y corregía cada palabra con impaciencia. Poco a poco encontró un ritmo cómodo. La velocidad llegó después, cuando dejó de apresurarse y empezó a prestar más atención a la precisión de sus movimientos.",
+        "id": 1000032
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La sopa de la abuela",
+        "text": "La sopa sabía distinta cada vez, aunque la abuela aseguraba seguir siempre la misma receta. Dependía de las verduras del mercado, del tiempo de cocción y de alguna especia añadida sin medir. Intentamos apuntarlo todo, pero comprendimos que también necesitábamos observar sus gestos y cocinar a su lado.",
+        "id": 1000033
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La página en blanco",
+        "text": "Para empezar a escribir, describió lo que veía desde su escritorio. Una taza, dos lápices y una ventana abierta bastaron para llenar el primer párrafo. Después llegaron recuerdos y preguntas. La página dejó de parecer un obstáculo cuando entendió que podía corregir las frases después de haberlas escrito.",
+        "id": 1000034
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Dos ciudades",
+        "text": "Vivía en una ciudad junto al mar, pero soñaba a menudo con las montañas de su infancia. Al visitar su pueblo, extrañaba el sonido de los barcos. Con los años dejó de buscar un único lugar al que pertenecer y aprendió a sentirse en casa en ambos paisajes.",
+        "id": 1000035
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "La semilla",
+        "text": "Plantamos las semillas en pequeños recipientes y escribimos la fecha en cada uno. Durante varios días no ocurrió nada visible. Aun así, mantuvimos la tierra húmeda y los dejamos cerca de la ventana. Cuando apareció el primer tallo, celebramos aquel cambio diminuto como si fuera una gran cosecha.",
+        "id": 1000036
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El puente reparado",
+        "text": "La tormenta había dañado el puente de madera que unía las dos orillas. Mientras llegaban los materiales, los vecinos señalizaron el paso y prepararon un camino alternativo. La reparación exigió paciencia y trabajo compartido. El día que volvieron a cruzarlo, comprendieron cuánto dependían de aquella estructura aparentemente tan sencilla.",
+        "id": 1000037
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El pan compartido",
+        "text": "Amasamos el pan sobre una mesa cubierta de harina. Cada persona quiso probar una forma distinta, así que la bandeja terminó llena de piezas desiguales. Mientras esperábamos junto al horno, preparamos la cena. Nadie se preocupó por las apariencias cuando el olor del pan recién hecho llenó la cocina.",
+        "id": 1000038
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "Un rato a solas",
+        "text": "Después de una semana llena de reuniones, agradeció pasar la tarde a solas. Apagó las notificaciones, puso música suave y ordenó algunas cosas sin prisa. Más tarde llamó a un amigo para conversar. Descubrió que el silencio elegido y la buena compañía podían formar parte del mismo descanso.",
+        "id": 1000039
+    },
+    {
+        "author": "Texto original de práctica",
+        "title": "El sueño del viaje",
+        "text": "Soñó que viajaba en un tren sin destino anunciado. Por la ventana pasaban campos, ciudades y un mar de color violeta. Al despertar, anotó los detalles que recordaba en una libreta. No buscó una explicación: le bastaba con conservar aquellas imágenes antes de que la mañana las borrara.",
+        "id": 1000040
+    }
 ]
