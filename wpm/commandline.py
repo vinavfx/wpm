@@ -19,8 +19,7 @@ import random
 import sys
 
 from wpm.convert import wpm_to_cpm
-from wpm.gauss import (prediction_interval, confidence_interval)
-import pkg_resources
+from wpm.gauss import prediction_interval, confidence_interval
 
 import wpm
 import wpm.config
@@ -29,50 +28,101 @@ import wpm.game
 import wpm.quotes
 import wpm.stats
 
+
 def parse_args():
     """Parses command line arguments."""
     argp = argparse.ArgumentParser(prog="wpm", epilog=wpm.__copyright__)
 
-    argp.add_argument("--load-json", metavar="FILENAME", default=None,
-                      help="""JSON file containing quotes.
+    argp.add_argument(
+        "--load-json",
+        metavar="FILENAME",
+        default=None,
+        help="""JSON file containing quotes.
 
 The format is
 
 [{"author": "...", "title": "...", "text": "...", "id": ...}, ...]
-""")
-    argp.add_argument("--load", metavar="FILENAME", default=None,
-                      help="A pure text file to train on.")
+""",
+    )
+    argp.add_argument(
+        "--load", metavar="FILENAME", default=None, help="A pure text file to train on."
+    )
 
-    argp.add_argument("-V", "--version", default=False, action="store_true",
-                      help="Show program version")
+    argp.add_argument(
+        "-V",
+        "--version",
+        default=False,
+        action="store_true",
+        help="Show program version",
+    )
 
-    argp.add_argument("--tag", default=None, type=str,
-                      help="Tag your race scores with this free text field.")
+    argp.add_argument(
+        "--tag",
+        default=None,
+        type=str,
+        help="Tag your race scores with this free text field.",
+    )
 
-    argp.add_argument("-s", "--stats", default=False, action="store_true",
-                      help="Shows score statistics grouped by tags")
+    argp.add_argument(
+        "-s",
+        "--stats",
+        default=False,
+        action="store_true",
+        help="Shows score statistics grouped by tags",
+    )
 
-    argp.add_argument("--cpm", default=False, action="store_true",
-                      help="Shows CPM instead of WPM in stats")
+    argp.add_argument(
+        "--cpm",
+        default=False,
+        action="store_true",
+        help="Shows CPM instead of WPM in stats",
+    )
 
-    argp.add_argument("--stats-file", default="~/.wpm.csv", type=str,
-                      help="File to record score history to (CSV format)")
+    argp.add_argument(
+        "--stats-file",
+        default="~/.wpm.csv",
+        type=str,
+        help="File to record score history to (CSV format)",
+    )
 
-    argp.add_argument("--id", "-i", default=None, type=int,
-                      help="If specified, jumps to given text ID on start.")
+    argp.add_argument(
+        "--id",
+        "-i",
+        default=None,
+        type=int,
+        help="If specified, jumps to given text ID on start.",
+    )
 
-    argp.add_argument("--search", default=None, type=str,
-                      help="Put quotes/authors/titles matching case-insensitive text query first")
+    argp.add_argument(
+        "--search",
+        default=None,
+        type=str,
+        help="Put quotes/authors/titles matching case-insensitive text query first",
+    )
 
-    argp.add_argument("--short", default=False, action="store_true",
-                      help="Starts wpm with short texts")
+    argp.add_argument(
+        "--short",
+        default=False,
+        action="store_true",
+        help="Starts wpm with short texts",
+    )
 
-    argp.add_argument("--spanish", default=False, action="store_true",
-                      help="Use the Spanish quotes database and ignore accents "
-                           "(unaccented letters count as correct)")
+    argp.add_argument(
+        "--spanish",
+        default=False,
+        action="store_true",
+        help=(
+            "Use the Spanish quotes database and ignore accents "
+            "(unaccented letters count as correct)"
+        ),
+    )
 
-    argp.add_argument("--monochrome", default=False, action="store_true",
-                      help="Starts wpm with monochrome colors")
+    argp.add_argument(
+        "--monochrome",
+        default=False,
+        action="store_true",
+        help="Starts wpm with monochrome colors",
+    )
 
     opts = argp.parse_args()
 
@@ -85,6 +135,7 @@ The format is
     opts.stats_file = os.path.expanduser(opts.stats_file)
     return opts
 
+
 def load_stats(filename, tag):
     """Loads CSV stats from file."""
     if not os.path.isfile(filename):
@@ -94,8 +145,7 @@ def load_stats(filename, tag):
         stats = wpm.stats.Stats.load(filename)
     except ValueError:
         new_name = filename + ".old"
-        print("Unsupported format. Renaming %s to %s" % (filename,
-                                                         new_name))
+        print("Unsupported format. Renaming %s to %s" % (filename, new_name))
         os.rename(filename, new_name)
         stats = wpm.stats.Stats()
 
@@ -104,15 +154,17 @@ def load_stats(filename, tag):
 
     return stats
 
+
 def load_json_quotes(filename):
     """Loads quotes from JSON file."""
     if filename is not None:
         return wpm.quotes.Quotes.load_json(filename)
     return []
 
+
 def load_spanish_quotes():
     """Loads the built-in Spanish quotes database."""
-    path = pkg_resources.resource_filename("wpm", "data/examples_es.json")
+    path = os.path.join(wpm.quotes.DATA_DIR, "examples_es.json")
     quotes = wpm.quotes.Quotes.load_json(path)
     quotes.database = "spanish"
     return quotes
@@ -136,6 +188,7 @@ def load_plain_text_quote(quotes, filename):
 
         quotes.append([author, title, text, text_id])
         return wpm.quotes.Quotes(quotes, database=database)
+
 
 def print_stats(stats, cpm):
     """Prints table of game results."""
@@ -167,44 +220,58 @@ def print_stats(stats, cpm):
                 ci = confidence_interval(avg, sd, len(results), alpha)
                 pi = prediction_interval(avg, sd, alpha)
 
-                table.append([name,
-                              label,
-                              avg,
-                              sd,
-                              100.0*acc_avg,
-                              100.0*acc_sd,
-                              ci[0],
-                              ci[1],
-                              pi[0],
-                              pi[1]])
+                table.append(
+                    [
+                        name,
+                        label,
+                        avg,
+                        sd,
+                        100.0 * acc_avg,
+                        100.0 * acc_sd,
+                        ci[0],
+                        ci[1],
+                        pi[0],
+                        pi[1],
+                    ]
+                )
 
     if table:
         width = max(max(len(e[0]) for e in table), 11)
     else:
         width = 0
 
-    head0 = "Tag          Games    %s                                     Accuracy" % ("CPM" if cpm else "WPM")
-    head1 = "                      avg     sd     %2d%% ci      %2d%% pi       avg     sd   " % (100*percent, 100*percent)
+    head0 = "Tag          Games    %s                                     Accuracy" % (
+        "CPM" if cpm else "WPM"
+    )
+    head1 = (
+        "                      avg     sd     %2d%% ci      %2d%% pi       avg    "
+        " sd   " % (100 * percent, 100 * percent)
+    )
 
     if cpm:
         head0 += "            "
         head1 += "            "
 
-    print("="*len(head1))
+    print("=" * len(head1))
     print(head0)
     print(head1)
-    print("-"*len(head1))
+    print("-" * len(head1))
 
     for entry in table:
         label, count, avg, sd, acc_avg, acc_sd, ci0, ci1, pi0, pi1 = entry
         if cpm:
-            print("%-*s   %6s  %7.1f  %7.1f   %7.1f-%7.1f %7.1f-%7.1f %5.1f%%  %5.1f%%" %
-                  (width, label, count, avg, sd, ci0, ci1, pi0, pi1, acc_avg, acc_sd))
+            print(
+                "%-*s   %6s  %7.1f  %7.1f   %7.1f-%7.1f %7.1f-%7.1f %5.1f%%  %5.1f%%"
+                % (width, label, count, avg, sd, ci0, ci1, pi0, pi1, acc_avg, acc_sd)
+            )
         else:
-            print("%-*s   %6s  %5.1f  %5.1f   %5.1f-%5.1f %5.1f-%5.1f %5.1f%%  %5.1f%%" %
-                  (width, label, count, avg, sd, ci0, ci1, pi0, pi1, acc_avg, acc_sd))
+            print(
+                "%-*s   %6s  %5.1f  %5.1f   %5.1f-%5.1f %5.1f-%5.1f %5.1f%%  %5.1f%%"
+                % (width, label, count, avg, sd, ci0, ci1, pi0, pi1, acc_avg, acc_sd)
+            )
 
-    print("="*len(head1))
+    print("=" * len(head1))
+
 
 def search(quotes, query):
     """Returns text IDs for quotes matching query."""
@@ -292,8 +359,9 @@ def main():
         sys.exit(1)
 
     try:
-        with wpm.game.GameManager(quotes, stats, opts.cpm, opts.monochrome,
-                                  ignore_accents) as gm:
+        with wpm.game.GameManager(
+            quotes, stats, opts.cpm, opts.monochrome, ignore_accents
+        ) as gm:
             try:
                 gm.run(to_front=text_ids)
                 gm.stats.save(opts.stats_file)

@@ -67,6 +67,7 @@ class Screen(object):
             self.screen.keypad(True)
             curses.noecho()
             curses.cbreak()
+            curses.curs_set(1)
 
             curses.start_color()
             self.set_colors()
@@ -465,13 +466,19 @@ class Screen(object):
             color = Screen.COLOR_CORRECT
 
         # Highlight correct / incorrect character in quote
-        ixpos, iypos = self.quote_coords[position + incorrect - 1]
-        color = Screen.COLOR_INCORRECT if incorrect else Screen.COLOR_CORRECT
-        self.chgat(max(ixpos, 0), 2 + iypos, 1, color)
+        if position + incorrect > 0:
+            ixpos, iypos = self.quote_coords[position + incorrect - 1]
+            self.chgat(max(ixpos, 0), 2 + iypos, 1, color)
 
         # Highlight next as correct, in case of backspace
         xpos, ypos = self.quote_coords[position + incorrect]
         self.chgat(xpos, 2 + ypos, 1, Screen.COLOR_QUOTE)
+
+    def unhighlight(self, start, end):
+        """Restores the plain quote color for offsets in [start, end]."""
+        for offset in range(start, min(end, len(self.quote)) + 1):
+            xpos, ypos = self.quote_coords[offset]
+            self.chgat(xpos, 2 + ypos, 1, Screen.COLOR_QUOTE)
 
     def show_keystroke(self, head, position, incorrect, typed, key):
         """Updates the screen while typing."""
@@ -495,7 +502,7 @@ class Screen(object):
 
     def clear(self):
         """Clears the screen."""
-        self.window.clear()
+        self.window.erase()
 
     def deinit(self):
         """Deinitializes curses."""

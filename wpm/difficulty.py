@@ -9,21 +9,22 @@ The quotes database is *not* covered by the AGPL!
 """
 
 import gzip
+import os
 import pickle
 
-import pkg_resources
+from wpm.quotes import DATA_DIR
+
 
 class Difficulty(object):
     """Loads difficulty scores."""
 
     @staticmethod
-    def _filename():
+    def filename():
         """Returns the filename of the packaged difficulty database."""
-        return pkg_resources.resource_filename("wpm",
-                                               "data/difficulty.pickle.gz")
+        return os.path.join(DATA_DIR, "difficulty.pickle.gz")
 
     @staticmethod
-    def _normalize(diffs):
+    def normalize(diffs):
         """Normalizes difficulty scores to 0.0-1.0 where 1.0 is hardest."""
         low = min(diffs.values())
         delta = max(diffs.values()) - low
@@ -41,6 +42,6 @@ class Difficulty(object):
         The difficulty scores are normalized and goes from 0.0 (easy) to 1.0
         (hard).
         """
-        filename = Difficulty._filename()
+        filename = Difficulty.filename()
         with gzip.open(filename, "rb") as file_obj:
-            return Difficulty._normalize(pickle.load(file_obj))
+            return Difficulty.normalize(pickle.load(file_obj))

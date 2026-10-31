@@ -20,12 +20,21 @@ from wpm.config import Config
 from wpm.record import Recorder
 from wpm.screen import Screen
 
+CTRL_U = "\x15"
+CTRL_W = "\x17"
+CTRL_BACKSPACE = "\x08"
+
 ACCENT_MAP = str.maketrans("áéíóúüÁÉÍÓÚÜ", "aeiouuAEIOUU")
 
 
 def fold_accents(text):
     """Returns text with accented letters replaced by their base letters."""
     return text.translate(ACCENT_MAP)
+
+
+def word_start(text, end):
+    """Returns the offset where the word ending at end begins."""
+    return max(text.rfind(" ", 0, end), text.rfind("\n", 0, end)) + 1
 
 
 def chars_match(target, key, ignore_accents=False):
@@ -241,6 +250,37 @@ class GameManager(object):
                 for inc in range(self.incorrect + 1):
                     self.screen.highlight_progress(self.position, inc)
 
+    def wrong_typed(self):
+        """Returns the incorrectly typed characters at the end of the buffer."""
+        if not self.incorrect:
+            return ""
+        wrong_count = self.incorrect
+        return self.edit_buffer[-wrong_count:]
+
+    def deletion_count(self, key):
+        """Returns how many typed characters a deletion shortcut removes."""
+        if key == CTRL_U:
+            return self.incorrect
+        typed = self.quote.text[: self.position] + self.wrong_typed()
+        stripped = typed.rstrip()
+        return len(typed) - word_start(stripped, len(stripped))
+
+    def delete_typed(self, count):
+        """Removes the last count typed characters, incorrect ones first."""
+        if count <= 0:
+            return
+        old_end = self.position + self.incorrect
+        wrong = self.wrong_typed()
+        from_incorrect = min(count, self.incorrect)
+        self.incorrect -= from_incorrect
+        self.position -= count - from_incorrect
+        text = self.quote.text
+        position = self.position
+        start = word_start(text, position)
+        self.edit_buffer = text[start:position] + wrong[: self.incorrect]
+        self.screen.clear_prompt()
+        self.screen.unhighlight(self.position + self.incorrect, old_end)
+
     def handle_key(self, key):
         """Dispatches actions based on key and current mode."""
         # TODO: Refactor this mess of a function
@@ -265,6 +305,11 @@ class GameManager(object):
             return
 
         self.recorder.add(self.elapsed, key, self.position, self.incorrect)
+
+        if key in (CTRL_U, CTRL_W, CTRL_BACKSPACE):
+            if self.is_typing:
+                self.delete_typed(self.deletion_count(key))
+            return
 
         if Screen.is_backspace(key):
             if self.incorrect:

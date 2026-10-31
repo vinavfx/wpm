@@ -20,12 +20,14 @@ import os
 import random
 import sys
 
-import pkg_resources
-
 from wpm.error import WpmError
+
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+
 
 class Quote(object):
     """Holds a single quote."""
+
     # pylint: disable=too-few-public-methods
 
     def __init__(self, author, title, text, text_id):
@@ -44,11 +46,12 @@ class Quote(object):
         return Quote(author, title, text, text_id)
 
     def __str__(self):
-        return "\"%s\"\n\t- %s: %s" % (self.text, self.author, self.title)
+        return '"%s"\n\t- %s: %s' % (self.text, self.author, self.title)
 
 
 class RandomIterator(object):
     """Random, bi-directional iterator."""
+
     def __init__(self, quotes):
         self.quotes = quotes
         self.indices = list(range(len(self.quotes)))
@@ -61,12 +64,12 @@ class RandomIterator(object):
     def current(self):
         """Returns current quote."""
         index = self.indices[self.index]
-        return self._get_quote(index)
+        return self.get_quote(index)
 
     def __getitem__(self, index):
-        return self._get_quote(index)
+        return self.get_quote(index)
 
-    def _get_quote(self, index):
+    def get_quote(self, index):
         quote = self.quotes[index]
         author = quote[0]
         title = quote[1]
@@ -121,23 +124,23 @@ class RandomIterator(object):
 
 class Quotes(object):
     """Container for quotes."""
-    def __init__(self, quotes=None, database=None):
+
+    def __init__(self, quotes=(), database=None):
         self.quotes = quotes
         self.database = database
-        self._index = None
+        self.text_id_index = {}
 
-    def _build_index(self):
+    def build_index(self):
         """Builds an index of text_ids."""
-        if self._index is None:
-            self._index = {}
+        if not self.text_id_index:
             for index, quote in enumerate(self.quotes):
                 quote = Quote.from_tuple(quote)
-                self._index[quote.text_id] = index
+                self.text_id_index[quote.text_id] = index
 
     def from_id(self, text_id):
         """Looks up quote from text_id."""
-        self._build_index()
-        index = self._index[text_id]
+        self.build_index()
+        index = self.text_id_index[text_id]
         return Quote.from_tuple(self.quotes[index])
 
     def __len__(self):
@@ -161,15 +164,15 @@ class Quotes(object):
         return RandomIterator(self)
 
     @staticmethod
-    def _database_filename():
+    def database_filename():
         """Returns the filename of the packaged database."""
-        return pkg_resources.resource_filename("wpm", "data/examples.json.gz")
+        return os.path.join(DATA_DIR, "examples.json.gz")
 
     @staticmethod
     def load_json(filename=None):
         """Loads quotes from a JSON file."""
         if filename is None:
-            filename = Quotes._database_filename()
+            filename = Quotes.database_filename()
 
         try:
             with codecs.open(filename, encoding="utf-8") as file_obj:
@@ -192,7 +195,7 @@ class Quotes(object):
     def load(filename=None):
         """Loads quotes from gzipped JSON file."""
         if filename is None:
-            filename = Quotes._database_filename()
+            filename = Quotes.database_filename()
             database = "default"
         else:
             database = os.path.splitext(os.path.basename(filename))[0]
@@ -209,7 +212,7 @@ class Quotes(object):
     def save(self, filename=None):
         """Saves current quotes to gzipped JSON file."""
         if filename is None:
-            filename = Quotes._database_filename()
+            filename = Quotes.database_filename()
 
         args = {"filename": filename, "mode": "wt"}
         if sys.version_info.major == 3:
