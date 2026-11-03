@@ -263,7 +263,10 @@ class GameManager(object):
             return self.incorrect
         typed = self.quote.text[: self.position] + self.wrong_typed()
         stripped = typed.rstrip()
-        return len(typed) - word_start(stripped, len(stripped))
+        count = len(typed) - word_start(stripped, len(stripped))
+        if key == CTRL_W:
+            return min(count, self.incorrect)
+        return count
 
     def delete_typed(self, count):
         """Removes the last count typed characters, incorrect ones first."""
