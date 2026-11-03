@@ -16,9 +16,9 @@ The quotes database is *not* covered by the AGPL!
 import curses
 import time
 
-from wpm.config import Config
-from wpm.record import Recorder
-from wpm.screen import Screen
+from .config import Config
+from .record import Recorder
+from .screen import Screen
 
 CTRL_U = "\x15"
 CTRL_W = "\x17"
@@ -261,12 +261,12 @@ class GameManager(object):
         """Returns how many typed characters a deletion shortcut removes."""
         if key == CTRL_U:
             return self.incorrect
+        if key == CTRL_BACKSPACE:
+            return min(1, self.incorrect)
         typed = self.quote.text[: self.position] + self.wrong_typed()
         stripped = typed.rstrip()
         count = len(typed) - word_start(stripped, len(stripped))
-        if key == CTRL_W:
-            return min(count, self.incorrect)
-        return count
+        return min(count, self.incorrect)
 
     def delete_typed(self, count):
         """Removes the last count typed characters, incorrect ones first."""
