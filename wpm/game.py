@@ -39,7 +39,7 @@ def word_start(text, end):
 
 def chars_match(target, key, ignore_accents=False):
     """Returns True if two characters are equal, optionally ignoring accents."""
-    if target == key:
+    if target == key or (target, key) in (("ñ", "n"), ("Ñ", "N")):
         return True
     if not ignore_accents:
         return False
